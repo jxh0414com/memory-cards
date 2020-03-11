@@ -107,3 +107,49 @@ body {
 .front-face {
   transform: rotateY(180deg);
 }
+
+@media screen and (max-width: 679px) {
+  .title {
+    display: none;
+  }
+
+  .memory-game {
+    width: calc(100vw);
+    height: calc(100vh);
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    perspective: 1000px;
+  }
+
+  .memory-card {
+    width: calc(50% - 10px);
+    height: calc(12% - 10px);
+    position: relative;
+    margin: 5px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    user-select: none;
+  }
+  .overlay-text.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+  }
+
+  .overlay-text-small {
+    font-size: 0.3em;
+  }
+
+  @keyframes overlay-grow {
+    from {
+      background: rgba(0, 0, 0, 0);
+      font-szie: 0;
+    }
+    to {
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 6em;
+    }
+  }
+}
