@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  cursor: grabbing;
+  font-family: 'Indie Flower', cursive;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  background-color: grey;
+}
+
+.game-info-container {
+  position: absolute;
+  top: 20vh;
+  color: white;
+}
+
+.title {
+  position: fixed;
+  color: white;
+  font-size: 2.5em;
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.overlay-text {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  color: white;
+}
+
+.overlay-text.visible {
+  display: flex;
+  flex-direction: column;
+  animation: overlay-grow 500ms forwards;
+}
+
+.overlay-text-small {
+  font-size: 0.3em;
+}
+
+@keyframes overlay-grow {
+  from {
+    background: rgba(0, 0, 0, 0);
+    font-szie: 0;
+  }
+  to {
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 10em;
+  }
+}
+
+.memory-game {
+  width: calc(100vw / 1.75);
+  height: calc(100vh / 1.35);
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(20% - 10px);
+  height: calc(25% - 10px);
+  position: relative;
+  margin: 5px;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  user-select: none;
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: silver;
+  backface-visibility: hidden;
+  -webkit-user-drag: none;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
